@@ -1,16 +1,73 @@
-# React + Vite
+# 🛡️ E-Cyber-Crime-Portal (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** part of the **E-Cyber-Crime-Portal** project, built using **React.js** and **Bootstrap**.  
+It provides a responsive UI for **Users, Investigators, and Admins** to manage complaints, dashboards, and profiles.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- **🔐 Role-Based Access Control (RBAC):** Three roles – `Admin`, `Investigator`, `User`.
+- **👤 User:**
+  -  Create and track complaints
+  -  Update profile
+  -  Dashboard to view own complaints
+  
+- **🕵️ Investigator:**
+  -  View assigned complaints
+  -  Resolve complaints & add notes
+  -  Update profile
+  -  Dashboard to see assigned/resolved stats
+    
+- **🛠️ Admin:**
+  -  Full management of users and investigators
+  -  Assign complaints to investigators
+  -  View all complaints
+  -  Dashboard with total stats (users, investigators, complaints)
+    
+- **✨ Other Features:**
+  -  OTP verification
+  -  JWT Authentication & Authorization
+  -  Image upload using `multer`
+  -  Change password / Reset password
+  -  Responsive tables & cards
+  -  Alerts & notifications
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech & Tools Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category       | Tools / Languages                       |
+|----------------|----------------------------------------|
+|  Frontend    | React.js, Bootstrap                     |
+|  Backend     | Node.js, Express.js                     |
+|  Database    | MongoDB, Mongoose                       |
+|  Auth        | JWT, RBAC, OTP Verification             |
+|  File Upload | Multer                                  |
+|  Testing/API | Postman                                 |
+|  DB Tools    | MongoDB Compass, Atlas                  |
+|  Deployment  | Vercel (Frontend), Render (Backend)     |
+
+---
+
+## Frontend Installation
+
+```bash
+git clone <your-repo-url>
+cd backend
+```
+
+2. Create a .env file in the frontend root with the following:
+```
+VITE_BACKEND_SERVER_URL=http://localhost:7000
+```
+
+3. Install dependencies:
+```
+npm install
+```
+
+4. Start the backend server:
+```
+npm run dev
+```
