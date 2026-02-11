@@ -5,6 +5,12 @@ It provides a responsive UI for **Users, Investigators, and Admins** to manage c
 
 ---
 
+### 👁️ View Demo Video
+
+[CLICK HERE](https://drive.google.com/file/d/1-1ZXHL2njBMpeqICbCowbMPat0GKGuDq/view?usp=sharing) ✔️👆
+
+--- 
+
 ## 🚀 Features
 
 - **🔐 Role-Based Access Control (RBAC):** Three roles – `Admin`, `Investigator`, `User`.
