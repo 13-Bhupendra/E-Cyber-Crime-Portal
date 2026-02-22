@@ -6,18 +6,15 @@ export const connectDB = async () => {
       throw new Error("MONGODB_ATLAS_URL is not defined");
     }
 
-    await mongoose.connect(process.env.MONGODB_ATLAS_URL, {
-      dbName: "E-cyber portal",
-    });
+    await mongoose.connect(process.env.MONGODB_ATLAS_URL);
 
     console.log("MongoDB connected successfully 🚀");
   } catch (error) {
     console.error("MongoDB connection failed ❌");
     console.error(error.message);
-    process.exit(1); 
+    process.exit(1);
   }
 };
-
 
 // import mongoose from "mongoose";
 // import dotenv from "dotenv"
