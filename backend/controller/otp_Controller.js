@@ -5,6 +5,15 @@ import bcrypt from "bcrypt"
 import dotenv from "dotenv";
 dotenv.config();
 
+const isProduction = process.env.NODE_ENV === "production";
+const authCookieOptions = {
+    maxAge: 1000 * 60 * 60 * 24,
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    path: "/",
+};
+
 /*============ OTP Verifing controller ===========*/
 export const verifyOTP = async (req ,res)=>{
     try {
@@ -29,11 +38,7 @@ export const verifyOTP = async (req ,res)=>{
                 role: user.role
             }} , process.env.SECRET_KEY , {expiresIn : "1d"});
             
-            res.cookie("Auth_Token" , token , {
-                maxAge :  1000 * 60 * 60 * 24,
-                sameSite : "strict",
-                httpOnly : true
-            })
+            res.cookie("Auth_Token" , token , authCookieOptions)
             
             res.json({status : true , message : "OTP is verified & Signin successfull !" , role : user.role});
             

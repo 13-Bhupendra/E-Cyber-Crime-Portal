@@ -23,7 +23,7 @@ const Signin = () => {
     
     try {
       setIsOtpSending(true)
-      const res = await axios.post(`${BASE_URL}/api/signin` , data)
+      const res = await axios.post(`${BASE_URL}/api/signin` , data, { withCredentials: true })
 
        if(res.data.status == true){
         localStorage.setItem("email" , email )

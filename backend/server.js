@@ -13,6 +13,12 @@ import { connectDB } from "./config/db.js";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
+
+const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 /* ================= MIDDLEWARE ================= */
 
@@ -22,10 +28,12 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://e-cyber-crime-portal.vercel.app",
-    ],
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );

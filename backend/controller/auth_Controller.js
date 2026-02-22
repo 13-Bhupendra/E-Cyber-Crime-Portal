@@ -4,6 +4,17 @@ import { otpSender } from "../service/otp_service.js";
 import { UserProfile_Collection } from "../model/userProfile_model.js";
 import { adminProfile_Collection } from "../model/adminProfile_model.js";
 import { investigatorProfile_Collection } from "../model/investigatorProfile_model.js";
+import dotenv from "dotenv";
+dotenv.config();
+
+const isProduction = process.env.NODE_ENV === "production";
+const authCookieOptions = {
+    maxAge: 1000 * 60 * 60 * 24,
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    path: "/",
+};
 
 /*================= Signup Controller ===============*/
 export const signup = async (req ,res)=>{
@@ -73,11 +84,7 @@ export const signin = async (req ,res)=>{
 /*================= Signout Controller ==============*/
 export const signout = async (req ,res)=>{
     try {
-        res.clearCookie("Auth_Token" , {
-             maxAge: 1000 * 60 * 60 * 24,
-             sameSite :"strict",
-             httpOnly : true
-        })
+        res.clearCookie("Auth_Token" , authCookieOptions)
         res.json({ status: true, message: "signout successfully !" })
     } catch (error) {
         res.json({ status: false, message: "signout failed !" });
