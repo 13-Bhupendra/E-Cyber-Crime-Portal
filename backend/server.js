@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 app.set("trust proxy", 1);
 
-const allowedOrigins = (process.env.CORS_ORIGINS || "http://localhost:5173")
+const allowedOrigins = ("https://e-cyber-crime-portals.vercel.app")
   .split(",")
   .map((origin) => origin.trim())
   .filter(Boolean);
